@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Images over</title>
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="node_modules/bootstrap-icons/font/bootstrap-icons.css">
+  <style>
+    .win-card{
+      overflow: hidden;
+      margin-bottom:2rem;
+    }
+    .card-column{
+      columns:300px 3;
+    }
+    .win-card img{
+       transition:0.3s;
+       
+    }
+    .win-card:hover img{
+      transform: scale(1.15) rotate(5deg) translateY(-20px);
+    }
+  </style>
+</head>
+<body class="vh-100">
+  <div class="container">
+    <div class="row my-5">
+      <div class="col-12">
+        <div class="card-column">
+          <div class="card win-card" style="width:250px;">
+            <img src="./images/a.jpeg"  alt="">
+            <div class="card-body">
+              <h3 class="card-title">Win</h3>
+              <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam veniam odio reprehenderit porro dolor.</p>
+              <a href="#" class="btn btn-primary">
+                <i class="bi bi-cart"></i>
+              </a>
+            </div>
+          </div>
+          <div class="card win-card" style="width:250px;">
+            <img src="./images/a.jpeg"  alt="">
+            <div class="card-body">
+              <h3 class="card-title">Win</h3>
+              <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam veniam odio reprehenderit porro dolor.</p>
+              <a href="#" class="btn btn-primary">
+                <i class="bi bi-cart"></i>
+              </a>
+            </div>
+          </div>
+          <div class="card win-card" style="width:250px;">
+            <img src="./images/a.jpeg"  alt="">
+            <div class="card-body">
+              <h3 class="card-title">Win</h3>
+              <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam veniam odio reprehenderit porro dolor.</p>
+              <a href="#" class="btn btn-primary">
+                <i class="bi bi-cart"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+    
+      </div>
+    </div>
+  </div>
+</body>
+</html>

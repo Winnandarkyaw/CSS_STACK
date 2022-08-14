@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Images over</title>
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="node_modules/bootstrap-icons/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="node_modules/imagehover.css/css/imagehover.min.css">
+  <style>
+    body{
+      height: 3000px;
+    }
+    .side-img{
+      position:fixed;
+      right:0;
+      top:0;
+      bottom:0;
+      margin:auto;
+      transform: translateX(250px) rotate(-10deg);
+    }
+    .show{
+      transform:translateX(0px);
+    }
+    .stack-img{
+      width:200px;
+      height:300px;
+      object-fit: cover;
+      margin-left:-120px;
+      border:5px solid white;
+      transform:rotate(15deg);
+      box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+      transition: 0.7s;
+    }
+    .stack-img:nth-child(1){
+      margin-left:0px;
+    }
+    .stack-img:hover{
+      transform:rotate(-20deg) translateY(-50px) translateX(-100px) scale(1.1);
+    }
+    .stack-2-img{
+      width:200px;
+      height:300px;
+      object-fit: cover;
+      margin-left:-120px;
+      border:5px solid white;
+      transform:rotate(15deg);
+      box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+      transition: 0.7s;
+    }
+    .stack-2-img:nth-child(1){
+      margin-left:0px;
+    }
+    .active{
+      transform:rotate(-20deg) translateY(-50px) translateX(-100px) scale(1.1);
+    }
+  </style>
+</head>
+<body class="min-vh-100">
+  <div class="container">
+    <div class="row my-5">
+      <div class="col-12 col-md-4">
+        <figure class="imghvr-hinge-left">
+          <img src="./images/a.jpeg">
+          <figcaption>
+            Heyyyyy!!!This is my photo hha hahah
+          </figcaption>
+        </figure>
+      </div>
+      <div class="col-12 my-5">
+        <button class="control btn btn-primary" id="show">Show</button>
+        <button class="control btn btn-primary" id="hide">Hide</button>
+        <button class="control btn btn-primary" id="toggle">Toggle</button>
+      </div>
+      <div class="col-12">
+        <div class="my-5">
+          <img class="stack-img" src="./images/a.jpeg" alt="" />
+          <img class="stack-img" src="./images/b.jpeg" alt="" />
+          <img class="stack-img" src="./images/c.jpeg" alt="" />
+          <img class="stack-img" src="./images/d.jpg" alt="" />
+          <img class="stack-img" src="./images/e.JPG" alt="" />
+          <img class="stack-img" src="./images/f.JPG" alt="" />
+          <img class="stack-img" src="./images/g.JPG" alt="" />
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="my-5">
+          <img class="stack-2-img" src="./images/a.jpeg" alt="" />
+          <img class="stack-2-img" src="./images/b.jpeg" alt="" />
+          <img class="stack-2-img" src="./images/c.jpeg" alt="" />
+          <img class="stack-2-img" src="./images/d.jpg" alt="" />
+          <img class="stack-2-img" src="./images/e.JPG" alt="" />
+          <img class="stack-2-img" src="./images/f.JPG" alt="" />
+          <img class="stack-2-img" src="./images/g.JPG" alt="" />
+        </div>
+        <div class="col-12 my-5">
+          <button class="control btn btn-primary" id="start" onclick="start()">Start</button>
+          <button class="control btn btn-primary" id="stop" onclick="stop()">Stop</button>
+          <button class="control btn btn-primary" id="auto">Auto</button>
+        </div>
+      </div>
+    </div>
+    
+    
+  </div>
+  <img src="./images/b.jpeg" width="300" alt="" class="side-img" />
+  <script>
+    let sideImg=document.querySelector(".side-img");
+    let showId=document.getElementById("show");
+    let hideId=document.getElementById("hide");
+    let toggleId=document.getElementById("toggle");
+    showId.addEventListener("click",function(){
+      sideImg.classList.add("show");
+    })
+    hideId.addEventListener("click",function(){
+      sideImg.classList.remove("show");
+    })
+    toggleId.addEventListener("click",function(){
+      sideImg.classList.toggle("show");
+    })
+    let allStackImages=document.querySelectorAll(".stack-2-img");
+    let currentStack=0;
+    function run()
+    {
+      if(currentStack>0){
+        allStackImages[currentStack-1].classList.remove('active');
+      }
+      else{
+        allStackImages[allStackImages.length-1].classList.remove('active');
+      }
+      allStackImages[currentStack].classList.add('active');
+      if(currentStack===allStackImages.length-1){
+        currentStack=0;
+      }
+      else{
+        currentStack++;
+      }
+    }
+    let runner;
+    function start(){
+      runner=setInterval(run,1000);
+    }
+    function stop(){
+      clearInterval(runner);
+    }
+
+  </script>
+</body>
+</html>
